@@ -19,7 +19,7 @@ public class InternetBankTest {
         open("http://localhost:9999");
     }
     @Test
-    void shouldSuccesfulLoginIfRegisteredActiveUser() {
+    void shouldSuccessfulLoginIfRegisteredActiveUser() {
         var registeredUser = getRegisteredUser("active");
         $("[data-test-id=login] input").setValue(registeredUser.getLogin());
         $("[data-test-id=password] input").setValue(registeredUser.getPassword());
