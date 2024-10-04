@@ -18,6 +18,7 @@ public class InternetBankTest {
     void setUp() {
         open("http://localhost:9999");
     }
+
     @Test
     void shouldSuccessfulLoginIfRegisteredActiveUser() {
         var registeredUser = getRegisteredUser("active");
@@ -26,6 +27,7 @@ public class InternetBankTest {
         $("[data-test-id=action-login]").click();
         $("h2").shouldHave(exactText("Личный кабинет"));
     }
+
     @Test
     void shouldGetErrorIfNotRegisteredUser() {
         var notRegisteredUser = getUser("active");
@@ -34,6 +36,7 @@ public class InternetBankTest {
         $("[data-test-id=action-login]").click();
         $("[data-test-id=error-notification] .notification__content").shouldHave(exactText("Ошибка! Неверно указан логин или пароль"), Duration.ofSeconds(10));
     }
+
     @Test
     void shouldErrorIfBlockedUser() {
         var blockedUser = getRegisteredUser("blocked");
@@ -43,6 +46,7 @@ public class InternetBankTest {
         $("[data-test-id=error-notification].notification_status_error .notification__title").shouldHave(exactText("Ошибка"), Duration.ofSeconds(10));
         $("[data-test-id=error-notification].notification_status_error .notification__content").shouldHave(exactText("Ошибка! Пользователь заблокирован"), Duration.ofSeconds(10));
     }
+
     @Test
     void shouldErrorIfWrongLogin() {
         var registeredUser = getRegisteredUser("active");
@@ -53,6 +57,7 @@ public class InternetBankTest {
         $("[data-test-id=error-notification] .notification__title").shouldHave(exactText("Ошибка"), Duration.ofSeconds(10));
         $("[data-test-id=error-notification] .notification__content").shouldHave(exactText("Ошибка! Неверно указан логин или пароль"), Duration.ofSeconds(10));
     }
+
     @Test
     void shouldErrorIfWrongPassword() {
         var registeredUser = getRegisteredUser("active");

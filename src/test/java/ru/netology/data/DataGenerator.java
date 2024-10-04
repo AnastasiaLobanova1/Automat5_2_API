@@ -56,7 +56,7 @@ public class DataGenerator {
         public static RegistrationDto getUser(String status) {
             String login = getRandomLogin();
             String password = getRandomPassword();
-            return new RegistrationDto (login,password,status);
+            return new RegistrationDto(login, password, status);
         }
 
         public static RegistrationDto getRegisteredUser(String status) {
@@ -65,13 +65,14 @@ public class DataGenerator {
             return registeredUser;
         }
     }
+
     @Value
     public static class RegistrationDto {
         String login;
         String password;
         String status;
 
-          }
+    }
 
 }
 
